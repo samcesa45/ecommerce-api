@@ -21,6 +21,8 @@ return new class extends Migration
             $table->integer('unit_discount_pct');
             $table->string('image_url');
             $table->string('status');
+            $table->string('color');
+            $table->string('size');
             $table->integer('rating_score')->default(0);
             $table->integer('final_total_rating')->default(0);
             $table->foreignUuid('category_id')->references('id')->on('categories')->onDelete('cascade');

@@ -19,7 +19,10 @@ class ProductFactory extends Factory
 
      protected $model = Product::class;
     public function definition(): array
+  
     {
+        $color_values = ['black','red','grey','orange','green'];
+        $size_values = ['xs','s','m','l','xl'];
         return [
             'name'=> $this->faker->unique()->name,
             'description' => $this->faker->sentence(5),
@@ -28,6 +31,8 @@ class ProductFactory extends Factory
             'final_unit_price' => $this->faker->randomFloat(1,20,80),
             'unit_discount_pct' => $this->faker->numberBetween(20, 100),
             'status' => $this->faker->word,
+            'color' => $this->faker->randomElement($color_values),
+            'size' => $this->faker->randomElement($size_values),
             'image_url'=> $this->faker->imageUrl(100,100),
             'category_id'=> Category::inRandomOrder()->first()->id,
             'brand_id'=>Brand::inRandomOrder()->first()->id ?? NULL,

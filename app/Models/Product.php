@@ -23,7 +23,9 @@ class Product extends Model
     'final_total_rating',
     'category_id',
     'brand_id',
-    'status'
+    'status',
+    'size',
+    'color',
    ];
    protected $hidden = [];
    protected $casts = [
@@ -36,7 +38,9 @@ class Product extends Model
     'final_total_rating' => 'integer',
     'final_unit_price' => 'decimal:2',
     'unit_discount_pct'=> 'decimal:2',
-    'status' => 'string'
+    'status' => 'string',
+    'size' => 'string',
+    'color' => 'string'
 
    ];
 
@@ -50,10 +54,6 @@ class Product extends Model
     return $this->hasMany(\App\Models\OrderItem::class);
    }
 
-   public function attributes()
-   {
-    return $this->hasMany(\App\Models\ProductAttribute::class);
-   }
    public function brand()
    {
     return $this->belongsTo(\App\Models\Brand::class);

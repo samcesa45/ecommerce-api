@@ -35,7 +35,9 @@ class UpdateProductAPIRequest extends AppBaseFormRequest
             'rating_score' => 'required|min:0|max:5',
             'final_total_rating' => 'required|min:0|max:500',
             'category_id' => 'required',
-            'brand_id' => 'required'
+            'brand_id' => 'required',
+            'size'=>'required|min:1|max:200',
+            'color'=> 'required|min:1|max:200'
             ];
         
     }

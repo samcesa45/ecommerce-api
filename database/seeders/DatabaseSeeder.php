@@ -23,9 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserRoleTableSeeder::class);
          \App\Models\Category::factory()->create();
          \App\Models\Brand::factory(10)->create();
-        \App\Models\Product::factory(30)->create();
+        \App\Models\Product::factory(100)->create();
         \App\Models\Customer::factory(10)->create();
-        \App\Models\ProductAttribute::factory(10)->create();
         \App\Models\Order::factory(10)->create();
         \App\Models\OrderItem::factory(10)->create();
         \App\Models\Cart::factory(10)->create();

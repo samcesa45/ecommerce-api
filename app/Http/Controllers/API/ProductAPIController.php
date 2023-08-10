@@ -32,8 +32,37 @@ class ProductAPIController extends AppBaseController
         if($request->get('limit')) {
             $query->limit($request->get('limit'));
         }
+        
+        //applying sort based on the query parameter
+        if($request->has('sort')) {
 
-        $products = $this->showAll($query->get());
+            //popular
+            if($request->has('popular')) {
+                $query->orderBy('rating_score','desc');
+            }
+
+            //newest
+            if($request->has('newest')) {
+                $query->orderBy('created_at','desc');
+            }
+
+            //customer_review
+            if($request->has('customer_review')) {
+                $query->orderBy('final_total_rating','desc');
+            }
+
+            //lowest to highest
+            if($request->has('lowest_to_highest')) {
+                $query->orderBy('final_unit_price','asc');
+            }
+
+            //highest to lowest
+            if($request->has('highest_to_lowest')) {
+                $query->orderBy('final_unit_price', 'desc');
+            }
+        }
+
+        $products = $query->get();
         
         return $this->sendResponse($products->toArray(), 'Products retrieved successfully');
         
